@@ -1,0 +1,58 @@
+name: cards
+states:
+    yes_cards:
+        component: meya.text
+        properties:
+            text: >
+                Awesome. We have a good selection of cards available.
+                Let's start with the first card...
+        delay:
+            relative: 1
+    home_warehouse:
+        component: meya.image
+        properties:
+            image_url: "http://www.psdgraphics.com/file/credit-card.jpg"
+    home_warehouse2:
+        component: meya.text_buttons
+        properties:
+            text: "Home Warehouse card: $0 annual fee. 28.8% interest. Retail promotions"
+            mode: quick_reply
+            buttons:
+                - text: Apply
+                  action: apply
+                - text: Next card...
+                  action: next
+        transitions:
+            next: timecast
+            apply: home_warehouse_apply
+    home_warehouse_apply:
+        flow: apply
+        data:
+            card: Home Warehouse
+        return: true
+    timecast:
+        component: meya.image
+        properties:
+            image_url: "http://www.psdgraphics.com/file/gold-credit-card.jpg"
+    timecast2:
+        component: meya.text_buttons
+        properties:
+            text: "Timecast card: $0 annual fee. 28.8% interest. Discounts on TV+Internet"
+            mode: quick_reply
+            buttons:
+                - text: Apply
+                  action: apply
+                - text: "Not interested"
+                  action: next
+        transitions:
+            next: not_interested
+            apply: timecast_apply
+    timecast_apply:
+        flow: apply
+        data:
+            card: Timecast
+        return: true
+    not_interested:
+        component: meya.text
+        properties:
+            text: "No problem. Have a nice day! 😊"

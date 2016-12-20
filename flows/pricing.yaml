@@ -1,0 +1,18 @@
+name: pricing
+states:
+    first:
+        component: meya.text
+        properties:
+            text: >
+                We have three tiers: Startup $49/mo, Business $99/mo and
+                Organization for $199/mo. Check out https://meyabank.com/pricing
+                to see what's included at each tier.
+    second:
+        component: meya.text_suggestions
+        properties:
+            text: >
+                If you're looking for something bigger I can connect you to
+                an Enterprise associate.
+            suggestions:
+                - "Yes, connect me"
+                - "No thanks"

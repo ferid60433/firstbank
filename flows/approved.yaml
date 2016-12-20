@@ -1,0 +1,13 @@
+name: approved
+states:
+    success_gif:
+        component: meya.image
+        properties:
+            image_url: 'https://media.giphy.com/media/OHZ1gSUThmEso/giphy.gif'
+    approved:
+        component: meya.text
+        properties:
+            text: >
+                Congratulations! I was able to approve your application
+                for the credit card. You should receive it in the mail within
+                1-2 weeks.

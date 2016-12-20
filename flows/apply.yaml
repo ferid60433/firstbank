@@ -1,0 +1,91 @@
+name: apply
+states:
+    start:
+        component: meya.text
+        properties:
+            text: >
+                Good choice! 💯
+        delay:
+            relative: .5
+    start2:
+        component: meya.text
+        properties:
+            text: >
+                Before I can approve you for a {{ flow.card }} credit card
+                I'll have to ask you a few questions. Let's get started...
+        delay:
+            relative: 1.5
+    name:
+        component: meya.input_string
+        properties:
+            text: "What's your full name?"
+            output: full_name
+            scope: user
+    address1:
+        component: meya.input_location
+        properties:
+            text: "What's your address?"
+            output: address
+            scope: user
+    address2:
+        component: meya.text_suggestions
+        properties:
+            mode: buttons
+            text: >
+                I'll put you down as living in {{ user.city }},
+                {{ user.state}}. Is that right?
+            suggestions:
+            - 'Yes'
+            - 'No'
+        transitions:
+            'Yes': address3
+            'No': address1
+    address3:
+        component: meya.text
+        properties:
+            text: "Great! Almost there. Just a few more questions..."
+        delay:
+            relative: 1
+    email:
+        component: meya.input_pattern
+        properties:
+            text: "What's your email address?"
+            pattern: ^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$
+            output: email
+            scope: user
+            require_match: true
+    income:
+        component: meya.input_string
+        properties:
+            text: >
+                Last question. What's your annual income?
+                Include salaries, wages, rental income, retirement, etc.
+            output: annual_income
+            scope: user
+            require_match: true
+    birthdate:
+        component: meya.input_string
+        properties:
+            text: "What's your date of birth?"
+            output: dob
+            scope: user
+            require_match: true
+    confirmation:
+        component: meya.text
+        properties:
+            text: Thanks so much. That's all I need.
+        delay:
+            relative: 1
+    transfer:
+        component: human.transfer
+        properties:
+            text: >
+                One moment while I transfer you to a live agent who will
+                process your credit application. This may take a few minutes...
+            note: |
+                Customer wants to apply for a card
+                name - {{ user.full_name }}
+                email - {{ user.email }}
+                dob - {{ user.dob }}
+                annual income - {{ user.annual_income }}
+        return: true

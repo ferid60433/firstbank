@@ -1,0 +1,6 @@
+name: end_conversation
+states:
+    first:
+        component: meya.text
+        properties:
+            text: "😀 Have a nice day!"

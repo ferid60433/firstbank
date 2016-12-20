@@ -1,0 +1,30 @@
+name: welcome
+states:
+    intro:
+        component: meya.text
+        properties:
+            text: >
+                I can get you setup with a credit card that's just right
+                for you.
+        delay:
+            relative: 2
+    ask:
+        component: meya.text_suggestions
+        properties:
+            text: >
+                Would you like to
+                see some cards that we have available?
+            suggestions:
+                - "Yes, please"
+                - "No, thanks"
+        transitions:
+            "Yes, please": yes_cards
+            "No, thanks": no_cards
+    no_cards:
+        component: meya.text
+        properties:
+            text: "No problem. Let me know if you need anything."
+        return: true
+    yes_cards:
+        flow: cards
+        return: true

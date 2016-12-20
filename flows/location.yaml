@@ -1,0 +1,12 @@
+name: location
+states:
+    input_location_state:
+        component: meya.input_location
+        properties:
+            text: Where are you?
+            output: your_key
+            scope: user
+    text_state:
+        component: meya.text
+        properties:
+            text: You are in {{ user.country }}
