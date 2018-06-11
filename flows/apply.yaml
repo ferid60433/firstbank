@@ -1,4 +1,7 @@
-name: apply
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _apply
 states:
     start:
         component: meya.text

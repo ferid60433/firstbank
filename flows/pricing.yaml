@@ -1,4 +1,7 @@
-name: pricing
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: How much does this cost?
 states:
     first:
         component: meya.text

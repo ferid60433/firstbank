@@ -1,4 +1,7 @@
-name: image
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _image
 states:
     image_card_state:
         component: meya.image

@@ -1,4 +1,7 @@
-name: approved
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _approved
 states:
     success_gif:
         component: meya.image

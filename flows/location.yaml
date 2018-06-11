@@ -1,4 +1,7 @@
-name: location
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: location
 states:
     input_location_state:
         component: meya.input_location

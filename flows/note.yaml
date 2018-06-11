@@ -1,4 +1,7 @@
-name: note
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: note
 states:
     note:
         component: human.note
