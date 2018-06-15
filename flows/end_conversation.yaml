@@ -1,4 +1,7 @@
-name: end_conversation
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _end_conversation
 states:
     first:
         component: meya.text

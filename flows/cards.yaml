@@ -1,4 +1,7 @@
-name: cards
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _cards
 states:
     yes_cards:
         component: meya.text

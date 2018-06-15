@@ -1,4 +1,7 @@
-name: welcome
+triggers:
+  - type: meya.keyword
+    properties:
+        keyword: _welcome
 states:
     intro:
         component: meya.text
